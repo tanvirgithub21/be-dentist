@@ -6,13 +6,13 @@ import { AiOutlineCloseSquare , AiOutlineBars} from "react-icons/ai";
 const Navbar = () => {
   let [open, setOpen] = useState(false);
   return (
-    <div className="shadow-md w-full sticky top-0 left-0">
+    <div className="shadow-md w-full sticky top-0 left-0 z-50">
       <div className="flex h-[3rem] items-center justify-between bg-white md:px-10 px-7">
         <div
           className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
-      text-gray-800"
+          text-[#00b8d2]"
         >
-          Designer
+          Be Dentist
         </div>
 
         <div
