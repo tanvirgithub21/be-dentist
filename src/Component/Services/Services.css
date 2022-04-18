@@ -1,0 +1,3 @@
+.servicesContainer{
+    grid-template-columns: repeat(3, minmax(230px, 300px));
+}
