@@ -28,3 +28,8 @@
       margin-left: 0px;
    }
 }
+@media only screen and (min-width: 768px){
+   .homeBtn{
+      margin-left: 4rem;
+   }
+}
