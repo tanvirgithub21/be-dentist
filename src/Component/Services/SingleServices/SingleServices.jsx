@@ -46,7 +46,7 @@ const SingleServices = ({services}) => {
         <p className="text-gray-700 text-base">{sliseDetails}</p>
       </div>
       <div className="px-6 pt-4 pb-4">
-        <Link className="px-2 py-1 font-semibold text-white rounded-lg bg-slate-600 hover:bg-slate-900 ease-in-out duration-300  inline-block inline-flex items-center" to={`/services/${services?.id}`} > checkout{" "} <span className="ml-2"> <BsFillCartCheckFill /> </span>{" "} </Link>
+        <Link className="px-2 py-1 font-semibold text-white rounded-lg bg-slate-600 hover:bg-slate-900 ease-in-out duration-300  inline-block inline-flex items-center" to={`/services/${services?.id}`} > Checkout{" "} <span className="ml-2"> <BsFillCartCheckFill /> </span>{" "} </Link>
       </div>
     </div>
   );

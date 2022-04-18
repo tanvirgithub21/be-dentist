@@ -2,3 +2,29 @@
  .fontCss{
     font-family: 'Pacifico', cursive;
  }
+
+ @media only screen and (max-width: 767px){
+	.homeText{
+      width: 50%;
+   }
+   .homeImage{
+      width: 50%;
+   }
+}
+ @media only screen and (max-width: 410px){
+   .homeText{
+      width: 30%;
+   }
+   .homeText h2{
+      margin-left: 0px;
+      font-size: 1rem;
+   }
+   .homeImage{
+      width: 70%;
+   }
+   .homeBtn{
+      font-size: .7rem;
+      width: 5.5rem;
+      margin-left: 0px;
+   }
+}
