@@ -5,7 +5,7 @@ import auth from '../firebase.init';
 const SingUp = () => {
 
     // Minimum eight characters, at least one letter and one number
-    const passwordReagx = "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
+    const passwordReagx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
     //Error massages 
     const [errorMassages, setErrorMassages] = useState(null);
@@ -18,21 +18,32 @@ const SingUp = () => {
 
     // check confirm password and show error massages
     useEffect(()=>{
-        if(confirmPassword){
-            if(password === confirmPassword){
-                setmachPassword(confirmPassword)
-                setErrorMassages("")
+
+
+        if((passwordReagx.test(password))){
+            if(confirmPassword){
+                if(password === confirmPassword){
+                    setmachPassword(confirmPassword)
+                    setErrorMassages("")
+                }else{
+                    setmachPassword("")
+                    setErrorMassages("Password not match!")
+                }
             }else{
-                setmachPassword("")
-                setErrorMassages("Password not match!")
+                setErrorMassages("")
             }
         }else{
-            setErrorMassages("")
+            if(password || confirmPassword){
+                setErrorMassages("8 characters,only letter and number")
+            }else{
+                setErrorMassages(null)
+            }
         }
+
+
+        
     },[password, confirmPassword])
 
-
-    console.log(errorMassages, machPassword)//=================>>Console.log Removed
 
     const [ createUserWithEmailAndPassword, user, loading, error, ] = useCreateUserWithEmailAndPassword(auth);
 
@@ -49,6 +60,7 @@ const SingUp = () => {
                                 className="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="email"
                                 placeholder="Email"
+                                required
                                 onChange={(e) => setEmail(e.target.value)}
                                 />
 
@@ -57,6 +69,7 @@ const SingUp = () => {
                                 className="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="password"
                                 placeholder="Password"
+                                required
                                 onChange={(e) => setPassword(e.target.value)}
                                  />
                             <input 
@@ -64,6 +77,7 @@ const SingUp = () => {
                                 className="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="confirm_password"
                                 placeholder="Confirm Password"
+                                required
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                  />
                             
