@@ -1,10 +1,31 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import './Navbar.css'
 import { AiOutlineCloseSquare , AiOutlineBars} from "react-icons/ai";
+import { signOut } from "firebase/auth";
+import auth from "../firebase.init";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Navbar = () => {
   let [open, setOpen] = useState(false);
+
+  const [user, loading, error] = useAuthState(auth);
+
+  console.log(user)
+  const navigate = useNavigate();
+
+  const handelSingOut = ()=>{
+    signOut(auth)
+    navigate('/home')
+
+/*     .then(() => {
+      console.log("signout")
+    })
+    .catch(error => {
+      console.log(error)
+    }); */
+  }
+
   return (
     <div className="drop-shadow-md w-full sticky top-0 left-0 z-50">
       <div className="flex h-[3rem] items-center justify-between  bg-white md:px-10 px-7">
@@ -44,13 +65,34 @@ const Navbar = () => {
           
 
           <li className="md:flex ">
+
+            {
+              user ? <div className="linkBox md:ml-8 text-xl md:my-0 my-7">
+              <span 
+              onClick={handelSingOut}
+              className="btnDeActive cursor-pointer">
+                Sing Out
+              </span>
+            </div>
+            :
+            <>
             <div className="linkBox md:ml-8 text-xl md:my-0 my-7">
             <NavLink to='/login' className={({ isActive }) =>  isActive? "btnActive" : "btnDeActive"} >Sing In</NavLink>
             </div>
-
+            
             <div className="linkBox md:ml-8 text-xl md:my-0 my-7">
             <NavLink to='/singup' className={({ isActive }) =>  isActive? "btnActive" : "btnDeActive"} >Sing Up</NavLink>
             </div>
+            </>
+            }
+            
+            
+
+            
+            
+
+
+
           </li>
 
 
