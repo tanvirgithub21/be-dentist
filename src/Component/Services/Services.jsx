@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useServicesData } from '../Customhooks/Customhooks';
 import './Services.css'
 import SingleServices from './SingleServices/SingleServices';
 
-const url = "https://raw.githubusercontent.com/tanvirgithub21/ass-10-data/gh-pages/services.json";
 
 const Services = () => {
 
-    const [services, setServives] = useState([]);
-
-    useEffect( ()=>{
-        fetch(url)
-        .then(data => data.json())
-        .then(response => setServives(response))
-    },[])
+    const [services, setServives, loding] = useServicesData()
 
     return (
         <div>

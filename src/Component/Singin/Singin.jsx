@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../firebase.init';
 import { FcGoogle } from "react-icons/fc";
 
@@ -11,35 +11,31 @@ const Singin = () => {
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState('');
 
+      //navigate
+      const navigate = useNavigate()//==============================problem
+      const [ loginUser ] = useAuthState(auth);//==============================problem
+      let location = useLocation()//==============================problem
+      let from = location.state?.from?.pathname || "/";//==============================problem
 
+      //singin with google
+      const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+      //singin email and password
+  
       const formSubmitSingin = e =>{
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // Signed in 
-          const user = userCredential.user;
-          // ...
-          console.log(user)
+          navigate(from, {replace: true} )
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorMessage)
-          setEmail="";
-          setPassword="";
+          const errorCode = error.code.slice(5);
+          console.log( errorCode)
         });
       }
 
-      //singin with google
-      const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
-      //Navigate to home
-      const navigate = useNavigate();
-      useEffect(()=>{
-        if(user){
-          navigate("/home")
-        }
-      },[user])
 
   return (
 

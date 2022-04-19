@@ -15,15 +15,6 @@ const SingleServices = ({services}) => {
   }
   
 
-/*   const [sliseDetails, setSliseDetails] = useState("") ==========================>>PROBLEM
-
-  if(details.length > 120){
-    setSliseDetails = (details.slice(0, 120)+"...");
-  }
-  else{
-  setSliseDetails(details)
-} */
-
   return (
     <div className="min-w-[250px] w-full rounded overflow-hidden shadow-lg">
       <div className="imgBox min-w-[250px] w-full h-60">
