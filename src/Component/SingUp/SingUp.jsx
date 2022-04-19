@@ -1,7 +1,7 @@
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import React, { useEffect, useState } from 'react';
 import auth from '../firebase.init';
-import { onAuthStateChanged } from 'firebase/auth';
+// import { onAuthStateChanged } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 
 const SingUp = () => {
@@ -42,27 +42,26 @@ const SingUp = () => {
         } 
     },[password, confirmPassword])
 
-    const [ createUserWithEmailAndPassword, user, loading] = useCreateUserWithEmailAndPassword(auth);
+    const [ createUserWithEmailAndPassword, user, loading] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
     const [sendEmailVerification, sending, error] = useSendEmailVerification(auth)
 
-    /*     const handelCreatUser = (event) =>{
+     const handelCreatUser = (event) =>{
         event.preventDefault()
         console.log(email, machPassword)
         createUserWithEmailAndPassword(email, machPassword)
-    } */
+        sendEmailVerification();
+    } 
 
-    const handelCreatUser = () =>{
+/*     const handelCreatUser = () =>{
         createUserWithEmailAndPassword(email, machPassword)
-        console.log(email, machPassword)
-        // sendEmailVerification()
-        // console.log(error)
-        sendEmailVerification(auth.currentUser)
-        .then(() => {
-            console.log("Email verification sent!")
-            // ...
-        });
-    }
+        sendEmailVerification();
 
+        sendEmailVerification(auth.currentUser)
+            .then(() => {
+                console.log("Email verification sent!")
+            });
+    }
+ */
 
 
     return (
@@ -72,7 +71,7 @@ const SingUp = () => {
                     <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
 
                             <h1 className="mb-8 text-3xl font-semibold text-center">Sign up</h1>
-                        <from>
+                        <form onSubmit={handelCreatUser}>
                             <input
                                 type="text"
                                 className="block border border-grey-light w-full p-3 rounded mb-4"
@@ -104,13 +103,12 @@ const SingUp = () => {
                             }
 
                             <input
-                                onClick={handelCreatUser}
                                 type="submit"
                                 value="Create Account"
                                 className="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-600 focus:outline-none my-1"
-                            />{/* Create Account</input>  */}
+                            />
 
-                        </from>
+                        </form>
 
                             <div className="text-gray-400 text-center mt-6">
                                 Already have an account? 

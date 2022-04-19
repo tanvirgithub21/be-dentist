@@ -37,6 +37,9 @@ const Navbar = () => {
             <div className="linkBox md:ml-8 text-xl md:my-0 my-7">
             <NavLink to='/blog' className={({ isActive }) =>  isActive? "active" : "deActive"} >Blog</NavLink>
             </div>
+            <div className="linkBox md:ml-8 text-xl md:my-0 my-7">
+            <NavLink to='/about' className={({ isActive }) =>  isActive? "active" : "deActive"} >About</NavLink>
+            </div>
           </li>
           
 
