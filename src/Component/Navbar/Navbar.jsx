@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import './Navbar.css'
 import { AiOutlineCloseSquare , AiOutlineBars} from "react-icons/ai";
 
@@ -8,12 +8,12 @@ const Navbar = () => {
   return (
     <div className="drop-shadow-md w-full sticky top-0 left-0 z-50">
       <div className="flex h-[3rem] items-center justify-between  bg-white md:px-10 px-7">
-        <div
-          className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
+        <Link
+          to='/home'          className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
           text-[#00b8d2]"
         >
           Be Dentist
-        </div>
+        </Link>
 
         <div
           onClick={() => setOpen(!open)}

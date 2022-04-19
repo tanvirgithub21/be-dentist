@@ -2,7 +2,7 @@ import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'rea
 import React, { useEffect, useState } from 'react';
 import auth from '../firebase.init';
 // import { onAuthStateChanged } from 'firebase/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SingUp = () => {
 
@@ -44,6 +44,7 @@ const SingUp = () => {
 
     const [ createUserWithEmailAndPassword, user, loading] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
     const [sendEmailVerification, sending, error] = useSendEmailVerification(auth)
+    
 
      const handelCreatUser = (event) =>{
         event.preventDefault()
@@ -52,16 +53,14 @@ const SingUp = () => {
         sendEmailVerification();
     } 
 
-/*     const handelCreatUser = () =>{
-        createUserWithEmailAndPassword(email, machPassword)
-        sendEmailVerification();
-
-        sendEmailVerification(auth.currentUser)
-            .then(() => {
-                console.log("Email verification sent!")
-            });
-    }
- */
+    
+    // Navigate to home
+    const navigate = useNavigate()
+    useEffect(()=>{
+        if(user){
+            navigate("/home")
+        }
+    },[user])
 
 
     return (

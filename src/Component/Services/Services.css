@@ -1,3 +1,22 @@
 .servicesContainer{
-    grid-template-columns: repeat(3, minmax(230px, 300px));
+    grid-template-columns: minmax(230px, 300px);
+
+}
+@media only screen and (min-width: 640px){
+    /*Tablets [601px -> 1200px]*/
+    .servicesContainer{
+        grid-template-columns: repeat(2, minmax(230px, 300px));
+    }
+}
+@media only screen and (min-width: 768px){
+	/*Big smartphones [426px -> 600px] md*/
+    .servicesContainer{
+        grid-template-columns: repeat(2, minmax(230px, 300px));
+    }
+}
+@media only screen and (min-width: 1024px){
+	/*Small smartphones [325px -> 425px] lg*/
+    .servicesContainer{
+        grid-template-columns: repeat(3, minmax(230px, 300px));
+    }
 }

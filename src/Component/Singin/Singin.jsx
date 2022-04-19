@@ -1,7 +1,9 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../firebase.init';
+import { FcGoogle } from "react-icons/fc";
 
 const Singin = () => {
 
@@ -28,6 +30,17 @@ const Singin = () => {
         });
       }
 
+      //singin with google
+      const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+      //Navigate to home
+      const navigate = useNavigate();
+      useEffect(()=>{
+        if(user){
+          navigate("/home")
+        }
+      },[user])
+
   return (
 
         <section className="h-[calc(100vh-3rem)]">
@@ -43,28 +56,13 @@ const Singin = () => {
                     </div>
                     <div className="btn-wrapper text-center">
                       <button
-                        className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+                        onClick={() => signInWithGoogle()}
+                        className="w-fill bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs text-[1rem]"
                         type="button"
                         style={{ transition: "all .15s ease" }}
                       >
-                        <img
-                          alt="..."
-                          className="w-5 mr-1"
-                          src={require("https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/github.svg").default}
-                        />
-                        Github
-                      </button>
-                      <button
-                        className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
-                        type="button"
-                        style={{ transition: "all .15s ease" }}
-                      >
-                        <img
-                          alt="..."
-                          className="w-5 mr-1"
-                          src={require("https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/google.svg").default}
-                        />
-                        Google
+                        <FcGoogle className="text-3xl mr-1"/>
+                        Sign in with Google
                       </button>
                     </div>
                     <hr className="mt-6 border-b-1 border-gray-400" />
