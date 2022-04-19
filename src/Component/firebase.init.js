@@ -7,12 +7,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC_PbclKGs0sxDRY1I16ebdOlqjFv-LH1I",
-  authDomain: "be-dentist.firebaseapp.com",
-  projectId: "be-dentist",
-  storageBucket: "be-dentist.appspot.com",
-  messagingSenderId: "703795281684",
-  appId: "1:703795281684:web:f6cc2a22936a7da71a8c01"
+  apiKey: "AIzaSyDjbyDgpJwVdE3rhyjZ1KE3UjHaTlwEMgc",
+  authDomain: "reviews-webste.firebaseapp.com",
+  projectId: "reviews-webste",
+  storageBucket: "reviews-webste.appspot.com",
+  messagingSenderId: "418851822053",
+  appId: "1:418851822053:web:9580e110a455d6f6b4f70c"
 };
 
 // Initialize Firebase

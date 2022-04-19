@@ -1,10 +1,11 @@
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import React, { useEffect, useState } from 'react';
 import auth from '../firebase.init';
+import { onAuthStateChanged } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 const SingUp = () => {
 
-    
     // Minimum eight characters, at least one letter and one number
     const passwordReagx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
@@ -44,7 +45,7 @@ const SingUp = () => {
     const [ createUserWithEmailAndPassword, user, loading] = useCreateUserWithEmailAndPassword(auth);
     const [sendEmailVerification, sending, error] = useSendEmailVerification(auth)
 
-/*     const handelCreatUser = (event) =>{
+    /*     const handelCreatUser = (event) =>{
         event.preventDefault()
         console.log(email, machPassword)
         createUserWithEmailAndPassword(email, machPassword)
@@ -52,9 +53,17 @@ const SingUp = () => {
 
     const handelCreatUser = () =>{
         createUserWithEmailAndPassword(email, machPassword)
-        console.log(email, machPassword,)
-        sendEmailVerification()
+        console.log(email, machPassword)
+        // sendEmailVerification()
+        // console.log(error)
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+            console.log("Email verification sent!")
+            // ...
+        });
     }
+
+
 
     return (
         <>
@@ -105,9 +114,10 @@ const SingUp = () => {
 
                             <div className="text-gray-400 text-center mt-6">
                                 Already have an account? 
-                                <a className="no-underline border-b border-blue-600 text-blue-600 font-semibold ml-1" href="../login/">
+                                <Link className="no-underline border-b border-blue-600 text-blue-600 font-semibold ml-1" 
+                                to="/login">
                                     Log in
-                                </a>.
+                                </Link>.
                             </div>
 
                     </div>
