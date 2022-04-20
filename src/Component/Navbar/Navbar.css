@@ -9,34 +9,38 @@
     color: gray;
     font-size: 1.2rem;
     font-weight: 500;
+    padding: 0rem .5rem;
 }
 
 .btnActive{
-    font-size: 1.1rem;
+    background-color: #2560fb;
+    font-size: 1rem;
     font-weight: 500;
-    color: white;
-    background-color: #30b99d;
-    padding: .3rem .8rem;
-    border-radius: 1rem;
+    padding: .4rem .7rem;
+    color: rgb(255, 255, 255);
+    border-radius: .4rem;
 }
 .btnDeActive{
-    font-size: 1.1rem;
+    background-color: #232834;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
     font-weight: 500;
-    color: white;
-    background-color: #2c4154;
-    padding: .3rem .8rem;
-    border-radius: 1rem;
+    padding: .4rem .7rem;
+    border-radius: .4rem;
+
 }
 @media only screen and (max-width: 767px){
-	.active{
+    .login-singup-box{
+        display: flex;
+        margin-right: 1rem;
+    }
+ 	.active{
         display: block;
-        background-color: rgb(0, 9, 26);
-        color: white;
-        border-bottom: none;
-        padding: .5rem 1.5rem;
-        border-radius: .3rem;
-        transition: ease .5s;
-
+        border-bottom: 2px solid rgb(0, 0, 0, 0.1);
+    }
+    .deActive{
+        display: block;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     }
     .linkBox{
         margin: .5rem;

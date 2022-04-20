@@ -75,15 +75,15 @@ const Navbar = () => {
               </span>
             </div>
             :
-            <>
-            <div className="linkBox md:ml-8 text-xl md:my-0 my-7">
-            <NavLink to='/login' className={({ isActive }) =>  isActive? "btnActive" : "btnDeActive"} >Sing In</NavLink>
+            <div className="login-singup-box flex ">
+              <div className="linkBox md:ml-8 text-xl md:my-0 my-7">
+              <NavLink to='/login' className={({ isActive }) =>  isActive? "btnActive" : "btnDeActive"} >Sing In</NavLink>
+              </div>
+              
+              <div className="linkBox md:ml-8 text-xl md:my-0 my-7">
+              <NavLink to='/singup' className={({ isActive }) =>  isActive? "btnActive" : "btnDeActive"} >Sing Up</NavLink>
+              </div>
             </div>
-            
-            <div className="linkBox md:ml-8 text-xl md:my-0 my-7">
-            <NavLink to='/singup' className={({ isActive }) =>  isActive? "btnActive" : "btnDeActive"} >Sing Up</NavLink>
-            </div>
-            </>
             }
             
             
