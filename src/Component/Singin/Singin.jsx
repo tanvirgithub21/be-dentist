@@ -4,18 +4,29 @@ import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../firebase.init';
 import { FcGoogle } from "react-icons/fc";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Singin = () => {
 
       // singin Account Email And Password 
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState('');
+      const [singinError, setSinginError] = useState('')
+
+      //show error massages
+      useEffect(()=>{
+        if(singinError){
+          toast.configure()
+          toast.error(`${singinError.toUpperCase()}`)
+        }
+      },[singinError])
 
       //navigate
-      const navigate = useNavigate()//==============================problem
-      const [ loginUser ] = useAuthState(auth);//==============================problem
-      let location = useLocation()//==============================problem
-      let from = location.state?.from?.pathname || "/";//==============================problem
+      const navigate = useNavigate()
+      const [ loginUser ] = useAuthState(auth);
+      let location = useLocation()
+      let from = location.state?.from?.pathname || "/";
 
       //singin with google
       const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -32,8 +43,8 @@ const Singin = () => {
           navigate(from, {replace: true} )
         })
         .catch((error) => {
-          const errorCode = error.code.slice(5);
-          console.log( errorCode)
+          console.log(error.code)
+          setSinginError( error.code.slice(5))
         });
       }
 
@@ -105,7 +116,7 @@ const Singin = () => {
                     
                     <div className="text-center mt-6">
                         <input
-                          className="bg-gray-800 hover:bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                          className="bg-gray-800 hover:bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full cursor-pointer"
                           type="submit"
                           value="SING IN"
                           style={{ transition: "all .15s ease" }}

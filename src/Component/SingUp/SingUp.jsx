@@ -1,10 +1,13 @@
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import React, { useEffect, useState } from 'react';
 import auth from '../firebase.init';
-// import { onAuthStateChanged } from 'firebase/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingUp = () => {
+
+    
 
     // Minimum eight characters, at least one letter and one number
     const passwordReagx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -17,6 +20,7 @@ const SingUp = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [machPassword, setmachPassword] = useState('');
+
 
     // check confirm password and strong password and show error massages
     useEffect(()=>{
@@ -45,15 +49,18 @@ const SingUp = () => {
     const [ createUserWithEmailAndPassword, user, emailPasswordLoading, emailPasswordError ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
     const [sendEmailVerification, emailVerifiSending, emailVerifiError] = useSendEmailVerification(auth)
     
-    if(emailPasswordError){
-        console.log(emailPasswordError)
-    }
      const handelCreatUser = (event) =>{
         event.preventDefault()
-        console.log(email, machPassword)
         createUserWithEmailAndPassword(email, machPassword)
+
+        const errorMassagesSingup = (emailPasswordError?.message)
+
+        toast.configure()
+        if(errorMassagesSingup){
+            toast.error(`${errorMassagesSingup?.slice(22, -2)?.toUpperCase()}`)
+        }
+        console.log(errorMassagesSingup, 'erromasseags')
         sendEmailVerification();
-        console.log(emailPasswordError)
     } 
 
     let location = useLocation()
@@ -113,7 +120,7 @@ const SingUp = () => {
 
                         </form>
 
-                            <div className="text-gray-400 text-center mt-6">
+                            <div className="text-gray-400 text-center mt-6 cursor-pointer">
                                 Already have an account? 
                                 <Link className="no-underline border-b border-blue-600 text-blue-600 font-semibold ml-1" 
                                 to="/login">
