@@ -19,8 +19,8 @@ const Home = () => {
                     </Link>
                   </div>
 
-                  <div className="homeImage h-full object-cover">
-                    <img className="scale-[1]	" src={doctorImg} alt="Doctor Images" />
+                  <div className="homeImage h-full object-cover flex items-start md:ml-[-9.5rem]">
+                    <img className="" src={doctorImg} alt="Doctor Images" />
                   </div>
                   
                 </div>

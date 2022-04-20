@@ -29,7 +29,25 @@
    }
 }
 @media only screen and (min-width: 768px){
+   .homeImage{
+      width: 610px;
+   }
    .homeBtn{
       margin-left: 4rem;
+   }
+}
+@media only screen and (min-width: 800px){
+   .homeImage{
+      margin-left: -8rem;
+   }
+}
+@media only screen and (min-width: 960px){
+   .homeImage{
+      margin-left: -5rem;
+   }
+}
+@media only screen and (min-width: 1060px){
+   .homeImage{
+      margin-left: -2rem;
    }
 }
