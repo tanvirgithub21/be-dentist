@@ -56,8 +56,8 @@ const CheckOut = () => {
                         </div>
                         <p className="mt-4 text-gray-800 font-medium">Payment inhtmlFormation</p>
                         <div className="">
-                        <label className="block text-sm text-gray-600" htmlFor="cus_name">Card</label>
-                        <input className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_name" name="cus_name" type="text" required="" placeholder="Card Number MM/YY CVC" aria-label="Name"/>
+                        <label className="block text-sm text-gray-600" htmlFor="cus_name">Bkash Mobile Number</label>
+                        <input className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_name" name="cus_name" type="text" required="" placeholder="01xxxxxxxxx" aria-label="Name"/>
                         </div>
                         <div className="mt-4">
                         <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">$ {price && price}</button>

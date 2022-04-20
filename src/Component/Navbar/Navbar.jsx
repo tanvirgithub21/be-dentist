@@ -11,7 +11,6 @@ const Navbar = () => {
 
   const [user, loading, error] = useAuthState(auth);
 
-  console.log(user)
   const navigate = useNavigate();
 
   const handelSingOut = ()=>{
