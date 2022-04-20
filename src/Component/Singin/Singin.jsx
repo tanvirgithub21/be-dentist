@@ -19,7 +19,9 @@ const Singin = () => {
 
       //singin with google
       const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-
+      if(loginUser){
+        navigate(from, {replace: true} )
+      }
       //singin email and password
   
       const formSubmitSingin = e =>{
