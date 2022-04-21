@@ -61,6 +61,8 @@ const SingUp = () => {
         }
         console.log(errorMassagesSingup, 'erromasseags')
         sendEmailVerification();
+
+        console.log(emailVerifiSending)
     } 
 
     let location = useLocation()
