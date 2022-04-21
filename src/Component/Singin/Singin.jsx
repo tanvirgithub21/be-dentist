@@ -129,7 +129,7 @@ const Singin = () => {
                             <Link
                             to="/login/reset"
   /*                           onClick={e => e.preventDefault()} */
-                            className=""
+                            className="text-red-500"
                             >
                             Forgot password?
                             </Link>
@@ -138,7 +138,7 @@ const Singin = () => {
                             <Link
                             to="/singup"
     /*                         onClick={e => e.preventDefault()} */
-                            className=""
+                            className="text-blue-500"
                             >
                             Create new account
                             </Link>
