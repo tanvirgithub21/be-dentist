@@ -1,6 +1,6 @@
 # Be Dantist
 
-[Live site: ](https://be-entist.web.app/about).
+[Live site: ](https://be-entist.web.app/about)
 
 ## Features
 
