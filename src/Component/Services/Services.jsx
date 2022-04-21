@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Loding from "../../images/Loding/Loding";
 import { useServicesData } from "../Customhooks/Customhooks";
+import Loding from "../Loding/Loding";
 import "./Services.css";
 import SingleServices from "./SingleServices/SingleServices";
 
@@ -10,7 +10,7 @@ const Services = () => {
   return (
     <>
       {loding ? (
-        <Loding />
+        <Loding/>
       ) : (
         <div>
           <h2 className="headerText text-3xl font-semibold text-center my-7 ">

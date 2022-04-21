@@ -3,6 +3,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import { useServicesData } from '../Customhooks/Customhooks';
 import auth from '../firebase.init';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CheckOut = () => {
 
@@ -28,12 +30,19 @@ const CheckOut = () => {
     useEffect(() =>{
         SetUaerEmail(user?.email);
     },[user])
+
+    const handeCheckout = (e) =>{
+        e.preventDefault()
+
+        toast.configure()
+        toast.success("Thanks for booking")
+    }
     
     return (
         <div className='w-full'>
             <div className="leading-loose max-w-[36rem] mx-auto">
                 <div className=' max-w-[30rem]  px-6 py-8 rounded shadow-2xl'>
-                <htmlform className="">
+                <form onSubmit={handeCheckout} className="">
                         <p className="text-gray-800 font-medium text-xl text-center mb-3">Checkout From</p>
 
                         <div className="mb-4">
@@ -62,7 +71,7 @@ const CheckOut = () => {
                         <div className="mt-4">
                         <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">$ {price && price}</button>
                         </div>
-                    </htmlform> 
+                    </form> 
                 </div>
             
             </div>

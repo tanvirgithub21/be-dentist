@@ -48,6 +48,7 @@ const SingUp = () => {
 
     const [ createUserWithEmailAndPassword, user, emailPasswordLoading, emailPasswordError ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
     const [sendEmailVerification, emailVerifiSending, emailVerifiError] = useSendEmailVerification(auth)
+
     
      const handelCreatUser = (event) =>{
         event.preventDefault()
@@ -58,11 +59,12 @@ const SingUp = () => {
         toast.configure()
         if(errorMassagesSingup){
             toast.error(`${errorMassagesSingup?.slice(22, -2)?.toUpperCase()}`)
+        }else{
+            sendEmailVerification();
         }
-        console.log(errorMassagesSingup, 'erromasseags')
-        sendEmailVerification();
+        
 
-        console.log(emailVerifiSending)
+        console.log(emailVerifiError)
     } 
 
     let location = useLocation()

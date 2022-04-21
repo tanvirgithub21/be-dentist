@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Loding from "../../images/Loding/Loding";
+import Loding from "../Loding/Loding";
 import "./Blog.css";
 
 const Blog = () => {
@@ -19,7 +19,7 @@ const Blog = () => {
   return (
     <>
       {loding ? (
-        <Loding />
+        <Loding/>
       ) : (
         <div className="h-[calc(100vh-13rem)]">
           <h2 className="text-3xl font-semibold text-center my-8">
