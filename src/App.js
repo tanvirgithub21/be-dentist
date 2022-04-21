@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import About from "./Component/About/About.jsx";
 import Blog from "./Component/Blog/Blog.jsx";
 import CheckOut from "./Component/CheckOut/CheckOut.jsx";
+import Footer from "./Component/Footer/Footer.jsx";
 import Home from "./Component/Home/Home.jsx";
 import Navbar from "./Component/Navbar/Navbar.jsx";
 import NotFound from "./Component/NotFound/NotFound.jsx";
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/singup" element={<SingUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer/>
     </div>
   );
 };

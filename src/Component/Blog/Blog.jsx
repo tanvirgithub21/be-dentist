@@ -10,12 +10,12 @@ const Blog = () => {
         .then(data => setQuestionData(data))
     },[])
     return (
-        <>
+        <div className='h-[calc(100vh-13rem)]'>
             <h2 className='text-3xl font-semibold text-center my-8'>Question Answer</h2>
         <div className='qurBox grid grid-cols-3 gap-4 justify-center'>
             {
                questionData.map(singleData => (
-                <div>
+                <div key={singleData.id}>
                     <div className='h-[20rem] shadow-lg p-3 border-2 rounded-lg'>
                         <h3 className='text-xl text-center mb-4'>{singleData?.title}</h3>
                         <p className='text-[1.1rem] text-gray-500'>{singleData?.ans}</p>
@@ -24,7 +24,7 @@ const Blog = () => {
                ) )
             }
         </div>
-        </>
+        </div>
     );
 };
 
